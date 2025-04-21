@@ -19,6 +19,7 @@ package solana
 
 import (
 	"fmt"
+	"strings"
 )
 
 // Wallet is a wrapper around a PrivateKey
@@ -95,6 +96,9 @@ func (a AccountMeta) less(act *AccountMeta) bool {
 	}
 	if a.IsWritable != act.IsWritable {
 		return a.IsWritable
+	}
+	if strings.Compare(a.PublicKey.String(), act.PublicKey.String()) < 0 {
+		return true
 	}
 	return false
 }
