@@ -63,11 +63,9 @@ func DecimalsInBigInt(decimal uint32) *big.Int {
 //
 //}
 
-var (
-	collator = collate.New(language.English)
-)
-
 func compareString(a, b string) int {
+	// collator is not thread-safe, so we create a new one each time.
+	collator := collate.New(language.English)
 	if res := collator.CompareString(a, b); res != 0 {
 		return res
 	}
