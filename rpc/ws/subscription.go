@@ -41,7 +41,7 @@ func newSubscription(
 	return &Subscription{
 		req:               req,
 		subID:             0,
-		stream:            make(chan result, 20),
+		stream:            make(chan result, 50),
 		err:               make(chan error, 10),
 		closeFunc:         closeFunc,
 		unsubscribeMethod: unsubscribeMethod,
